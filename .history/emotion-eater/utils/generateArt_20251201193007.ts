@@ -55,84 +55,57 @@ export function generateBlobPath(seed: string): string {
     const radius = size * 0.4 * params.size; // Size multiplier
     const variance = size * 0.1 * (1 + params.spikiness); // Spikiness affects variance
 
-    // Generate points with emotion-influenced variation
     for (let i = 0; i < numPoints; i++) {
         const angle = (i / numPoints) * Math.PI * 2;
-        
-        // Add some emotion-based distortion
-        let angleOffset = 0;
-        if (params.spikiness > 0.5) {
-            // Spiky emotions get angular distortion
-            angleOffset = (random() - 0.5) * Math.PI * 0.2;
-        }
-        
-        const adjustedAngle = angle + angleOffset;
         const r = radius + (random() - 0.5) * variance * 2;
-        
-        // Add secondary variation for certain emotions
-        let radiusMultiplier = 1;
-        if (emotion === 'excited' || emotion === 'energetic') {
-            radiusMultiplier = 1 + Math.sin(angle * 4) * 0.3; // Wavy excited shape
-        } else if (emotion === 'anxious') {
-            radiusMultiplier = 1 + Math.sin(angle * 6 + random() * Math.PI) * 0.4; // Irregular anxious shape
-        }
-        
         points.push({
-            x: center.x + Math.cos(adjustedAngle) * r * radiusMultiplier,
-            y: center.y + Math.sin(adjustedAngle) * r * radiusMultiplier
+            x: center.x + Math.cos(angle) * r,
+            y: center.y + Math.sin(angle) * r
         });
     }
 
+    // Generate smooth path using Catmull-Rom splines or cubic bezier
+    // Here we use a simple quadratic bezier approach to smooth it
+
     if (points.length === 0) return "";
 
-    // Smoothing approach influenced by emotion
-    const smoothingFactor = params.smoothness;
-    
-    // Start at midpoint of last and first point
+    let d = `M ${points[0].x} ${points[0].y}`;
+
+    for (let i = 0; i < points.length; i++) {
+        const p0 = points[i];
+        const p1 = points[(i + 1) % points.length];
+
+        // Midpoint
+        const mx = (p0.x + p1.x) / 2;
+        const my = (p0.y + p1.y) / 2;
+
+        // This makes it a bit pointy if we just line to midpoint,
+        // to make it smooth we can use quadratic curve
+        // Q controlPoint endPoint
+        // For a closed loop of smooth curves through points, we usually use
+        // the points as control points for curves between midpoints.
+
+        // Let's rewrite: Start at midpoint between last and first
+        // Then curve to midpoint between first and second using first as control
+    }
+
+    // Better smoothing approach:
+    // Start at midpoint of last and 0
     const pLast = points[points.length - 1];
     const p0 = points[0];
     const startX = (pLast.x + p0.x) / 2;
     const startY = (pLast.y + p0.y) / 2;
 
-    let d = `M ${startX} ${startY}`;
+    d = `M ${startX} ${startY}`;
 
     for (let i = 0; i < points.length; i++) {
         const p1 = points[i];
         const p2 = points[(i + 1) % points.length];
-        
-        // Calculate control points with smoothness influence
-        let controlX = p1.x;
-        let controlY = p1.y;
-        
-        if (smoothingFactor > 1.0) {
-            // For very smooth emotions, pull control points towards center
-            const pullFactor = (smoothingFactor - 1.0) * 0.3;
-            controlX += (center.x - p1.x) * pullFactor;
-            controlY += (center.y - p1.y) * pullFactor;
-        } else if (smoothingFactor < 0.7) {
-            // For jagged emotions, push control points away from center
-            const pushFactor = (0.7 - smoothingFactor) * 0.5;
-            controlX += (p1.x - center.x) * pushFactor;
-            controlY += (p1.y - center.y) * pushFactor;
-        }
-        
         const endX = (p1.x + p2.x) / 2;
         const endY = (p1.y + p2.y) / 2;
 
-        d += ` Q ${controlX} ${controlY} ${endX} ${endY}`;
+        d += ` Q ${p1.x} ${p1.y} ${endX} ${endY}`;
     }
 
     return d;
-}
-
-// Generate multiple layered shapes for complex emotions
-export function generateMultiLayerPath(seed: string, layers: number = 1): string[] {
-    const paths: string[] = [];
-    
-    for (let layer = 0; layer < layers; layer++) {
-        const layerSeed = `${seed}_layer_${layer}`;
-        paths.push(generateBlobPath(layerSeed));
-    }
-    
-    return paths;
 }
