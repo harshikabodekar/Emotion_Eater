@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface EmotionEntry {
@@ -18,24 +18,6 @@ interface EmotionHistoryProps {
 export default function EmotionHistory({ currentEmotion, onEmotionSelect }: EmotionHistoryProps) {
   const [history, setHistory] = useState<EmotionEntry[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen]);
 
   useEffect(() => {
     if (currentEmotion.trim()) {
@@ -61,7 +43,7 @@ export default function EmotionHistory({ currentEmotion, onEmotionSelect }: Emot
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-3 px-6 py-3 bg-black/80 backdrop-blur-lg border-2 border-gray-600 rounded-xl text-white hover:bg-black/90 transition-all shadow-lg"

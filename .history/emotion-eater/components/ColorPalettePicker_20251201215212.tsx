@@ -75,6 +75,11 @@ export default function ColorPalettePicker({ onPaletteChange, currentPalette }: 
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+    primary: currentPalette?.primary || "#4ECDC4",
+    secondary: currentPalette?.secondary || "#45B7D1",
+    accent: currentPalette?.accent || "#96CEB4",
+    background: currentPalette?.background || "#2C3E50"
+  });
 
   const handleColorChange = (key: keyof CustomPalette, color: string) => {
     const newPalette = { ...customPalette, [key]: color };
