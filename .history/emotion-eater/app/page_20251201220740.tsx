@@ -118,20 +118,14 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="z-10 flex flex-col items-center gap-8 w-full max-w-4xl">
-        <div className="text-center mb-4">
-          {/* Enhanced Title with Background */}
-          <div className="bg-black/90 backdrop-blur-lg border-2 border-white/20 rounded-2xl px-8 py-6 shadow-2xl mb-4 inline-block">
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight">
-              <span className="bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent drop-shadow-2xl">
-                EMOTION EATER
-              </span>
-              <span className="text-lg md:text-xl font-medium text-yellow-400 block md:inline ml-0 md:ml-3 mt-1 md:mt-0 drop-shadow-lg">
-                Pro
-              </span>
-            </h1>
-            <div className="h-1 w-full bg-gradient-to-r from-transparent via-white/40 to-transparent mt-3 rounded-full"></div>
-          </div>
-          <p className="text-white font-medium text-lg md:text-xl bg-black/70 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20 shadow-lg inline-block">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter drop-shadow-md">
+            EMOTION EATER 
+            <span className="text-sm font-normal opacity-70 block md:inline align-top mt-2 md:mt-0 ml-2">
+              Pro
+            </span>
+          </h1>
+          <p className="text-white/60 text-sm mt-2">
             Transform your emotions into fluid art experiences
           </p>
         </div>
@@ -204,23 +198,14 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="absolute bottom-4 left-0 right-0 text-center">
-        <div className="bg-black/80 backdrop-blur-sm text-white/90 text-sm font-medium px-6 py-2 rounded-full border border-white/20 shadow-lg inline-block">
-          Client-side only • No permissions required • Lightweight WebGL
-        </div>
+      <div className="absolute bottom-4 text-white/30 text-xs text-center">
+        Client-side only • No permissions required • Lightweight WebGL
       </div>
 
       {/* Accessibility Indicator */}
       {(settings.highContrast || settings.reducedMotion) && (
-        <div className="absolute top-4 right-4 z-30">
-          <div className="bg-black/90 text-white border border-white/30 rounded-lg px-3 py-2 text-sm font-medium shadow-lg">
-            {settings.highContrast && (
-              <span className="mr-2" title="High Contrast Mode">🔆 High Contrast</span>
-            )}
-            {settings.reducedMotion && (
-              <span title="Reduced Motion Mode">⏸️ Reduced Motion</span>
-            )}
-          </div>
+        <div className="absolute top-4 right-4 text-white/50 text-xs">
+          {settings.highContrast && '🔆'} {settings.reducedMotion && '⏸️'}
         </div>
       )}
     </main>

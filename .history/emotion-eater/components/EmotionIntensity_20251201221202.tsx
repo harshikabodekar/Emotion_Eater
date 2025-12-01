@@ -38,13 +38,11 @@ export default function EmotionIntensity({ intensity, onIntensityChange }: Emoti
 
   return (
     <div className="w-full max-w-md">
-      <div className="bg-black/70 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 mb-3 shadow-lg">
-        <div className="flex items-center justify-between">
-          <label className="text-white text-lg font-bold drop-shadow-lg">Intensity</label>
-          <span className="text-white font-semibold text-base bg-black/50 px-3 py-1 rounded-full border border-white/30">
-            {getIntensityLabel(intensity)} ({Math.round(intensity * 100)}%)
-          </span>
-        </div>
+      <div className="flex items-center justify-between mb-3">
+        <label className="text-white text-lg font-semibold">Intensity</label>
+        <span className="text-white/80 text-base font-medium">
+          {getIntensityLabel(intensity)} ({Math.round(intensity * 100)}%)
+        </span>
       </div>
       
       <div className="relative">
@@ -129,24 +127,19 @@ export default function EmotionIntensity({ intensity, onIntensityChange }: Emoti
       </div>
       
       {/* Intensity effects description */}
-      <div className="mt-3 bg-black/90 backdrop-blur-lg border-2 border-white/30 rounded-lg px-5 py-3 shadow-xl">
+      <div className="mt-3 bg-black/80 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 shadow-lg">
         <motion.p 
-          className="text-white font-semibold text-base text-center drop-shadow-lg"
+          className="text-white font-medium text-sm text-center"
           animate={{ 
-            scale: intensity > 0.7 ? 1.02 : 1,
+            color: intensity > 0.7 ? '#FFFFFF' : '#FFFFFFCC',
           }}
+          style={{ color: getIntensityColor(intensity) }}
         >
           {intensity < 0.3 && "✨ Soft flowing movements"}
           {intensity >= 0.3 && intensity < 0.6 && "🌊 Balanced energy flow"}
           {intensity >= 0.6 && intensity < 0.8 && "🔥 Dynamic vibrant effects"}
           {intensity >= 0.8 && "💥 Explosive intense visuals"}
         </motion.p>
-        <div className="mt-2 flex justify-center">
-          <div 
-            className="w-16 h-1 rounded-full" 
-            style={{ backgroundColor: getIntensityColor(intensity) }}
-          />
-        </div>
       </div>
     </div>
   );

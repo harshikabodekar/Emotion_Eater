@@ -212,15 +212,8 @@ export default function Home() {
 
       {/* Accessibility Indicator */}
       {(settings.highContrast || settings.reducedMotion) && (
-        <div className="absolute top-4 right-4 z-30">
-          <div className="bg-black/90 text-white border border-white/30 rounded-lg px-3 py-2 text-sm font-medium shadow-lg">
-            {settings.highContrast && (
-              <span className="mr-2" title="High Contrast Mode">🔆 High Contrast</span>
-            )}
-            {settings.reducedMotion && (
-              <span title="Reduced Motion Mode">⏸️ Reduced Motion</span>
-            )}
-          </div>
+        <div className="absolute top-4 right-4 text-white/50 text-xs">
+          {settings.highContrast && '🔆'} {settings.reducedMotion && '⏸️'}
         </div>
       )}
     </main>
