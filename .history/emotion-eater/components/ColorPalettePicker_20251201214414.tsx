@@ -89,16 +89,16 @@ export default function ColorPalettePicker({ onPaletteChange, currentPalette }: 
     <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-3 px-6 py-3 bg-black/80 backdrop-blur-lg border-2 border-gray-600 rounded-xl text-white hover:bg-black/90 transition-all shadow-lg"
+        className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         <div className="flex gap-1">
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.primary }} />
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.secondary }} />
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.accent }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.primary }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.secondary }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.accent }} />
         </div>
-        <span className="text-base font-medium">Colors</span>
+        <span className="text-sm">Colors</span>
       </motion.button>
 
       <AnimatePresence>
@@ -107,7 +107,7 @@ export default function ColorPalettePicker({ onPaletteChange, currentPalette }: 
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="absolute top-full mt-2 left-0 w-96 bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
+            className="absolute top-full mt-2 left-0 w-80 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-4 shadow-xl z-50"
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-white font-medium">Color Palette</h3>

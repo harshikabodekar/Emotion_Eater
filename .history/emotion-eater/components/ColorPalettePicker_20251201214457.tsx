@@ -94,11 +94,11 @@ export default function ColorPalettePicker({ onPaletteChange, currentPalette }: 
         whileTap={{ scale: 0.95 }}
       >
         <div className="flex gap-1">
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.primary }} />
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.secondary }} />
-          <div className="w-4 h-4 rounded-full border border-white/30" style={{ backgroundColor: currentPalette?.accent }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.primary }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.secondary }} />
+          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: currentPalette?.accent }} />
         </div>
-        <span className="text-base font-medium">Colors</span>
+        <span className="text-sm">Colors</span>
       </motion.button>
 
       <AnimatePresence>

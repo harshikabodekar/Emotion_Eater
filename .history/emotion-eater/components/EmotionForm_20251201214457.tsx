@@ -31,7 +31,7 @@ export default function EmotionForm({ onEmotionChange, onTyping }: EmotionFormPr
   return (
     <div className="w-full max-w-lg mx-auto z-10 relative">
       <div className="bg-black/80 backdrop-blur-lg border-2 border-gray-600 rounded-2xl p-8 shadow-2xl">
-        <label htmlFor="emotion-input" className="block text-white text-xl font-semibold mb-3 text-center">
+        <label htmlFor="emotion-input" className="block text-white text-lg font-medium mb-2 text-center">
           How do you feel?
         </label>
         <input

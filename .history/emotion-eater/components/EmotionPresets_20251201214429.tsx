@@ -59,8 +59,8 @@ export default function EmotionPresets({ onEmotionSelect, currentEmotion }: Emot
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <span className="text-xl">🎭</span>
-        <span className="text-base font-medium">Presets</span>
+        <span className="text-lg">🎭</span>
+        <span className="text-sm">Presets</span>
       </motion.button>
 
       <AnimatePresence>
@@ -69,7 +69,7 @@ export default function EmotionPresets({ onEmotionSelect, currentEmotion }: Emot
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="absolute top-full mt-2 left-0 w-96 bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
+            className="absolute top-full mt-2 left-0 w-[28rem] bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
           >
             <h3 className="text-white font-medium mb-4">Emotion Presets</h3>
             

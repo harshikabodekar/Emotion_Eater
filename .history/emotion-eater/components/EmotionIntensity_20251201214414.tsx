@@ -38,9 +38,9 @@ export default function EmotionIntensity({ intensity, onIntensityChange }: Emoti
 
   return (
     <div className="w-full max-w-md">
-      <div className="flex items-center justify-between mb-3">
-        <label className="text-white text-lg font-semibold">Intensity</label>
-        <span className="text-white/80 text-base font-medium">
+      <div className="flex items-center justify-between mb-2">
+        <label className="text-white/80 text-sm font-medium">Intensity</label>
+        <span className="text-white/60 text-xs">
           {getIntensityLabel(intensity)} ({Math.round(intensity * 100)}%)
         </span>
       </div>
@@ -48,7 +48,7 @@ export default function EmotionIntensity({ intensity, onIntensityChange }: Emoti
       <div className="relative">
         <motion.div
           ref={sliderRef}
-          className="relative w-full h-8 bg-black/80 border-2 border-gray-600 rounded-full cursor-pointer overflow-hidden shadow-lg"
+          className="relative w-full h-6 bg-white/10 border border-white/20 rounded-full cursor-pointer overflow-hidden"
           onClick={handleSliderChange}
           onMouseDown={() => setIsAdjusting(true)}
           onMouseUp={() => setIsAdjusting(false)}

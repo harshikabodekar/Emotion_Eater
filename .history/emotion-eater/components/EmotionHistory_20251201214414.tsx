@@ -46,14 +46,14 @@ export default function EmotionHistory({ currentEmotion, onEmotionSelect }: Emot
     <div className="relative">
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-3 px-6 py-3 bg-black/80 backdrop-blur-lg border-2 border-gray-600 rounded-xl text-white hover:bg-black/90 transition-all shadow-lg"
+        className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <span className="text-base font-medium">History ({history.length})</span>
+        <span className="text-sm">History ({history.length})</span>
       </motion.button>
 
       <AnimatePresence>
@@ -62,7 +62,7 @@ export default function EmotionHistory({ currentEmotion, onEmotionSelect }: Emot
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="absolute top-full mt-2 right-0 w-96 max-h-96 overflow-y-auto bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
+            className="absolute top-full mt-2 right-0 w-80 max-h-96 overflow-y-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl p-4 shadow-xl z-50"
           >
             <h3 className="text-white font-medium mb-3">Recent Emotions</h3>
             

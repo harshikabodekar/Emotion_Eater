@@ -154,19 +154,19 @@ export default function Home() {
         {/* Live Stats */}
         {emotion && (
           <div className="text-center">
-            <div className="inline-flex items-center gap-6 px-8 py-4 bg-black/80 backdrop-blur-lg border-2 border-gray-600 rounded-xl shadow-lg">
+            <div className="inline-flex items-center gap-4 px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl">
               <div className="text-center">
-                <div className="text-white/80 text-sm font-medium">Current Emotion</div>
-                <div className="text-white font-semibold text-lg">{emotion}</div>
+                <div className="text-white/60 text-xs">Current Emotion</div>
+                <div className="text-white font-medium">{emotion}</div>
               </div>
-              <div className="w-px h-8 bg-gray-500" />
+              <div className="w-px h-6 bg-white/20" />
               <div className="text-center">
-                <div className="text-white/80 text-sm font-medium">Intensity</div>
-                <div className="text-white font-semibold text-lg">{Math.round(intensity * 100)}%</div>
+                <div className="text-white/60 text-xs">Intensity</div>
+                <div className="text-white font-medium">{Math.round(intensity * 100)}%</div>
               </div>
-              <div className="w-px h-8 bg-gray-500" />
+              <div className="w-px h-6 bg-white/20" />
               <div className="text-center">
-                <div className="text-white/80 text-sm font-medium">Colors Active</div>
+                <div className="text-white/60 text-xs">Colors Active</div>
                 <div className="flex gap-1 justify-center mt-1">
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: palette.primary }} />
                   <div className="w-2 h-2 rounded-full" style={{ backgroundColor: palette.secondary }} />

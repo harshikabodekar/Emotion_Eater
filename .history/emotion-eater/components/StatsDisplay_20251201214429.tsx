@@ -85,10 +85,10 @@ export default function StatsDisplay({ currentEmotion, intensity }: StatsDisplay
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
-        <span className="text-base font-medium">Stats</span>
+        <span className="text-sm">Stats</span>
         {totalSessions > 0 && (
           <span className="px-2 py-1 bg-white/20 rounded-full text-xs">
             {totalSessions}
@@ -102,7 +102,7 @@ export default function StatsDisplay({ currentEmotion, intensity }: StatsDisplay
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="absolute top-full mt-2 right-0 w-96 max-h-96 overflow-y-auto bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
+            className="absolute top-full mt-2 right-0 w-[28rem] max-h-96 overflow-y-auto bg-black/90 backdrop-blur-xl border-2 border-gray-600 rounded-xl p-6 shadow-2xl z-50"
           >
             <h3 className="text-white font-medium mb-4">Emotion Analytics</h3>
             
