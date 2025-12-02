@@ -15,7 +15,7 @@ export function generateBlobPath(seed: string): string {
 
     // Parameters for the blob
     const size = 200;
-    const numPoints = 8 + Math.floor(random() * 5); // 8 to 12 points
+    const numPoints = 12; // Constant number of points for smooth morphing
     const points: {x: number, y: number}[] = [];
     const center = { x: size / 2, y: size / 2 };
     const radius = size * 0.4;
@@ -30,39 +30,16 @@ export function generateBlobPath(seed: string): string {
         });
     }
 
-    // Generate smooth path using Catmull-Rom splines or cubic bezier
-    // Here we use a simple quadratic bezier approach to smooth it
-
+    // Generate smooth path using a simple quadratic bezier approach
     if (points.length === 0) return "";
 
-    let d = `M ${points[0].x} ${points[0].y}`;
-
-    for (let i = 0; i < points.length; i++) {
-        const p0 = points[i];
-        const p1 = points[(i + 1) % points.length];
-
-        // Midpoint
-        const mx = (p0.x + p1.x) / 2;
-        const my = (p0.y + p1.y) / 2;
-
-        // This makes it a bit pointy if we just line to midpoint,
-        // to make it smooth we can use quadratic curve
-        // Q controlPoint endPoint
-        // For a closed loop of smooth curves through points, we usually use
-        // the points as control points for curves between midpoints.
-
-        // Let's rewrite: Start at midpoint between last and first
-        // Then curve to midpoint between first and second using first as control
-    }
-
-    // Better smoothing approach:
     // Start at midpoint of last and 0
     const pLast = points[points.length - 1];
     const p0 = points[0];
     const startX = (pLast.x + p0.x) / 2;
     const startY = (pLast.y + p0.y) / 2;
 
-    d = `M ${startX} ${startY}`;
+    let d = `M ${startX} ${startY}`;
 
     for (let i = 0; i < points.length; i++) {
         const p1 = points[i];
